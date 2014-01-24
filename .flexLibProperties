@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="defines.CmdCfg"/>
+    <classEntry path="defines.BattleCard"/>
+    <classEntry path="defines.Quest"/>
+    <classEntry path="defines.BossGuanQiaInfo"/>
+    <classEntry path="defines.HuoDongInfo"/>
+    <classEntry path="defines.ShenQiInfo"/>
+    <classEntry path="defines.SingleShenQiEffectInfo"/>
+    <classEntry path="DBConfigs"/>
+    <classEntry path="JMSGManagerConfigPanel"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

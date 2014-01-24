@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300" creationComplete="group1_creationCompleteHandler(event)" implements="ICommand">
+	<fx:Script>
+		<![CDATA[
+			import defines.CmdCfg;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			public static var instance:Command;
+			
+			private var callbackpool:ArrayCollection = new ArrayCollection;
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				instance = this;	
+				setDestination("http://172.26.72.1/DataEditor/Amfphp/");
+			}
+			
+			public function sendCommand(rpcparam:Function,command:String,data:Array=null):void
+			{
+				var head:Array=[];
+				if (rpcparam == null)
+				{
+					head.push(-1);
+				}
+				else
+				{
+					var index:int = callbackpool.getItemIndex(rpcparam);
+					if (index==-1) 
+					{
+						callbackpool.addItem(rpcparam);
+						index=callbackpool.getItemIndex(rpcparam);
+					}
+					head.push(index);
+				}
+				
+				head.push(command);
+							
+				if (data)
+				{
+					head = head.concat(data);
+				}
+				
+				remoteCmd.sendCommand(head);
+				
+				head=null;
+			}
+			
+			public function onReceivedCommand(evt:ResultEvent):void
+			{
+				var ret:Array;
+				ret = evt.result as Array;
+				var data:Array;
+				
+				var inforget:String;
+				if(ret == null || ret.length < 2)
+				{
+					Alert.show("");
+				}
+				else
+				{
+					var succ:Boolean = ret.shift();
+					if (succ)
+					{
+						var rpcparamindex:int = ret.shift();
+						if (rpcparamindex != -1)
+						{
+							
+							var func:Function=callbackpool.getItemAt(rpcparamindex) as Function;
+							if(func != null)
+							{
+								inforget = ret.shift();
+								data = (ret.shift() as Array);
+								func(data);
+							}
+						}
+						else
+						{
+							inforget= ret.shift();
+							data = ret.shift();
+						}
+					}
+					else
+					{
+						var msg:Object = ret.shift();
+						if(msg is String)
+							Alert.show(String(msg));
+						else if(msg is int)
+							Alert.show();
+					}
+				}
+			}
+			
+			private function faultHandler(fault:FaultEvent):void
+			{
+				Alert.show("出错");
+			}
+			
+			public function setDestination(endPoint:String):void
+			{
+				remoteCmd.endpoint = endPoint;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:RemoteObject id="remoteCmd" destination="amfphp" source="Command"
+						 fault="faultHandler(event)" >
+			<s:method name="sendCommand" result="onReceivedCommand(event)" />
+		</s:RemoteObject>
+	</fx:Declarations>
+	
+</s:Group>
