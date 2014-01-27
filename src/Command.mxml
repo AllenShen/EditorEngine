@@ -19,7 +19,8 @@
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
 				instance = this;	
-				setDestination("http://172.26.72.1/DataEditor/Amfphp/");
+				setDestination("http://42.62.67.240/servers/DataEditor/Amfphp/");
+//				setDestination("http://127.0.0.1/DataEditor/Amfphp/");
 			}
 			
 			public function sendCommand(rpcparam:Function,command:String,data:Array=null):void
@@ -110,9 +111,9 @@
 		]]>
 	</fx:Script>
 	<fx:Declarations>
-		<s:RemoteObject id="remoteCmd" destination="amfphp" source="Command"
-						 fault="faultHandler(event)" >
-			<s:method name="sendCommand" result="onReceivedCommand(event)" />
+		<s:RemoteObject id="remoteCmd" destination="amfphp" source="Command" requestTimeout="10000" 
+						 fault="faultHandler(event)">
+			<s:method name="sendCommand" result="onReceivedCommand(event)"/>
 		</s:RemoteObject>
 	</fx:Declarations>
 	

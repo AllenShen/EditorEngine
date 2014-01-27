@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="318" height="110" title="选择配置">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="318" height="110" title="选择配置" creationComplete="panel1_creationCompleteHandler(event)">
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
 			
 			public static const Event_DBChoose:String = "databasechoose";
 			private var dbType:int = 0;
 			
+			private var _loader:URLLoader = null;
+			
+			[Bindable]
+			public var allDBS:ArrayCollection;
+			
+			[Bindable]
+			public static var instance:JMSGManagerConfigPanel;
+			
 			protected function btnOk_clickHandler(event:MouseEvent):void
 			{
 				dbType = int(serverSelect.selectedItem["type"]);
 				
-				var _loader:URLLoader = new URLLoader();  
-				var _url:URLRequest = new URLRequest("http://172.26.72.1/DataEditor/InitPhpSettings.php"); 
+				_loader = new URLLoader();  
+				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/InitPhpSettings.php"); 
+//				var _url:URLRequest = new URLRequest("http://127.0.0.1/DataEditor/InitPhpSettings.php"); 
 				
 				var param:URLVariables = new URLVariables(); 
 				param.db = dbType; 
 				_url.data = param ; 
-				_url.method = URLRequestMethod.POST;
+				_url.method = URLRequestMethod.GET;
 				
 				_loader.addEventListener(Event.COMPLETE, loaded);  
 				_loader.load(_url);  
@@ -29,9 +40,26 @@
 			
 			private function loaded(evt:Event):void  
 			{  
+				allDBS = new ArrayCollection;
+				
+				var retData:String = _loader.data;
+				var splitNames:Array = retData.split("|");
+				for(var i:int = 0;i < splitNames.length - 1;i += 6)
+				{
+					var singleConfigData:SingleServer = new SingleServer;
+					singleConfigData.catchData([splitNames[i],splitNames[i+1],splitNames[i+2],splitNames[i+3],splitNames[i+4],splitNames[i+5]]);
+					allDBS.addItem(singleConfigData);	
+				}
+				
 				PopUpManager.removePopUp(this);
 				this.dispatchEvent(new DataEvent(Event_DBChoose,false,false,dbType.toString()));				
 			} 
+			
+			protected function panel1_creationCompleteHandler(event:FlexEvent):void
+			{
+				instance = this;
+			}
+			
 		]]>
 	</fx:Script>
 	

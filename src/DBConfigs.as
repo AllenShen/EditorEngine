@@ -22,6 +22,24 @@ package
 			]
 		);
 		
+		public static function getserverIndex(serverIndex:int):int
+		{
+			var retCount:int = 0;
+			switch(serverIndex)
+			{
+				case DBIndex_Debug:
+					retCount = 0;
+					break;
+				case DBIndex_OutTest:
+					retCount = 1;
+					break;
+				default:
+					retCount = 0;
+					break;
+			}
+			return retCount;
+		}
+		
 		public function DBConfigs()
 		{
 			
