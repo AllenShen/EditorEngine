@@ -15,18 +15,67 @@
 			private var _loader:URLLoader = null;
 			
 			[Bindable]
-			public var allDBS:ArrayCollection;
+			public var allGameDBs:ArrayCollection;
+			
+			[Bindable]
+			public var allEditorDBs:ArrayCollection;
 			
 			[Bindable]
 			public static var instance:JMSGManagerConfigPanel;
 			
+			//设置当前编辑的数据库
 			protected function btnOk_clickHandler(event:MouseEvent):void
 			{
-				dbType = int(serverSelect.selectedItem["type"]);
+				dbType = int(serverSelect.selectedItem["id"]);
 				
 				_loader = new URLLoader();  
 				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/InitPhpSettings.php"); 
-//				var _url:URLRequest = new URLRequest("http://127.0.0.1/DataEditor/InitPhpSettings.php"); 
+				
+				var param:URLVariables = new URLVariables(); 
+				param.db = dbType; 
+				_url.data = param ; 
+				_url.method = URLRequestMethod.GET;
+				
+				_loader.addEventListener(Event.COMPLETE, onEditorServerSelected);  
+				_loader.load(_url);  
+			}
+			
+			private function onEditorServerSelected(evt:Event):void
+			{
+				btnOk.enabled = false;
+				PopUpManager.removePopUp(this);
+				this.dispatchEvent(new DataEvent(Event_DBChoose,false,false,dbType.toString()));	
+			}
+			
+			protected function panel1_creationCompleteHandler(event:FlexEvent):void
+			{
+				instance = this;
+				
+				_loader = new URLLoader();  
+				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/GetEditorDBs.php"); 
+				
+				var param:URLVariables = new URLVariables(); 
+				_url.data = param ; 
+				_url.method = URLRequestMethod.GET;
+				
+				_loader.addEventListener(Event.COMPLETE, onDbInfoloaded);  
+				_loader.load(_url);  
+				btnOk.enabled = false;
+			}
+			
+			private function onDbInfoloaded(evt:Event):void
+			{
+				allEditorDBs = new ArrayCollection;
+				
+				var retData:String = _loader.data;
+				var splitNames:Array = retData.split("|");
+				for(var i:int = 0;i < splitNames.length - 1;i += 8)
+				{
+					allEditorDBs.addItem({"id":splitNames[i],"name":splitNames[i + 7]});	
+				}
+				
+				_loader = new URLLoader();  
+				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/GetTargetServers.php"); 
 				
 				var param:URLVariables = new URLVariables(); 
 				param.db = dbType; 
@@ -35,12 +84,11 @@
 				
 				_loader.addEventListener(Event.COMPLETE, loaded);  
 				_loader.load(_url);  
-				btnOk.enabled = false;
 			}
 			
 			private function loaded(evt:Event):void  
 			{  
-				allDBS = new ArrayCollection;
+				allGameDBs = new ArrayCollection;
 				
 				var retData:String = _loader.data;
 				var splitNames:Array = retData.split("|");
@@ -48,17 +96,11 @@
 				{
 					var singleConfigData:SingleServer = new SingleServer;
 					singleConfigData.catchData([splitNames[i],splitNames[i+1],splitNames[i+2],splitNames[i+3],splitNames[i+4],splitNames[i+5]]);
-					allDBS.addItem(singleConfigData);	
+					allGameDBs.addItem(singleConfigData);	
 				}
 				
-				PopUpManager.removePopUp(this);
-				this.dispatchEvent(new DataEvent(Event_DBChoose,false,false,dbType.toString()));				
+				btnOk.enabled = true;
 			} 
-			
-			protected function panel1_creationCompleteHandler(event:FlexEvent):void
-			{
-				instance = this;
-			}
 			
 		]]>
 	</fx:Script>
@@ -72,9 +114,9 @@
 		<s:VGroup horizontalAlign="center" gap="10">
 			<s:HGroup verticalAlign="middle">
 				<s:Label text="选择数据库类型" />
-				<s:ComboBox id="serverSelect" width="150" dataProvider="{DBConfigs.allSpecialTypes}" labelField="desc" selectedIndex="0" />
+				<s:ComboBox id="serverSelect" width="150" dataProvider="{allEditorDBs}" labelField="name" selectedIndex="0" />
 			</s:HGroup>
-			<s:Button label="OK" id="btnOk" click="btnOk_clickHandler(event)" />
+			<s:Button label="OK" id="btnOk" click="btnOk_clickHandler(event)" enabled="true"/>
 		</s:VGroup>
 	</s:Group>
 	
