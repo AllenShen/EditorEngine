@@ -9,6 +9,7 @@ package defines
 		
 		public var armid:int;
 		public var originalId:int;
+		public var canPick:int;
 		
 		public var armtype:int;	
 		
@@ -67,6 +68,7 @@ package defines
 			var retInfo:ArmInfoObj = new ArmInfoObj;
 			retInfo.armid = this.armid;
 			retInfo.armtype = this.armtype;
+			retInfo.canPick = this.canPick;
 			retInfo.gender = this.gender;
 			retInfo.powerGroup = this.powerGroup;
 			retInfo.specialtype = this.specialtype;

@@ -14,6 +14,7 @@ package defines
 		public var damage:int = 0;
 		public var damageRatio:Number = 0;
 		public var qualityLevel:int = 0;
+		public var forSelf:int = 0;
 		
 		public var skill1:Array = [];
 		public var skill2:Array = [];

@@ -71,7 +71,7 @@
 				var splitNames:Array = retData.split("|");
 				for(var i:int = 0;i < splitNames.length - 1;i += 8)
 				{
-					allEditorDBs.addItem({"id":splitNames[i],"name":splitNames[i + 7]});	
+					allEditorDBs.addItem({"id":splitNames[i],"name":splitNames[i + 7],"dbname":splitNames[i+1]});	
 				}
 				
 				_loader = new URLLoader();  
