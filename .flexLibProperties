@@ -11,6 +11,8 @@
     <classEntry path="DBConfigs"/>
     <classEntry path="JMSGManagerConfigPanel"/>
     <classEntry path="SingleServer"/>
+    <classEntry path="defines.ProductInfo91"/>
+    <classEntry path="Global"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

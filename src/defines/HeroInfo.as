@@ -27,6 +27,11 @@ package defines
 		public var leadership:int;
 		public var skillRoundCount:int;
 		
+		public var sellType:int = 0;
+		public var sellPrice:int = 0;
+		
+		public var sourceDesc:String;
+		
 		public function HeroInfo()
 		{
 		}

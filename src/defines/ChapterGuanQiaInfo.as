@@ -27,13 +27,16 @@ package defines
 		
 		public var pathPoints:Array = [];
 		
+		public var guanqiaTask:int;
+		public var guanqiaTaskDetail:Quest;
+		
 		public function ChapterGuanQiaInfo()
 		{
 		}
 		
 		public function getNonOriginalData():Array
 		{
-			return ["allsimpleguanqiadetais"];
+			return ["allsimpleguanqiadetais","guanqiaTaskDetail"];
 		}
 		
 	}

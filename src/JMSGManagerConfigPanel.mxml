@@ -28,16 +28,19 @@
 			{
 				dbType = int(serverSelect.selectedItem["id"]);
 				
-				_loader = new URLLoader();  
-				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/InitPhpSettings.php"); 
+				Global.mysqlIndex = dbType;
 				
-				var param:URLVariables = new URLVariables(); 
-				param.db = dbType; 
-				_url.data = param ; 
-				_url.method = URLRequestMethod.GET;
-				
-				_loader.addEventListener(Event.COMPLETE, onEditorServerSelected);  
-				_loader.load(_url);  
+//				_loader = new URLLoader();  
+//				var _url:URLRequest = new URLRequest("http://42.62.67.240/servers/DataEditor/InitPhpSettings.php"); 
+//				
+//				var param:URLVariables = new URLVariables(); 
+//				param.db = dbType; 
+//				_url.data = param ; 
+//				_url.method = URLRequestMethod.GET;
+//				
+//				_loader.addEventListener(Event.COMPLETE, onEditorServerSelected);  
+//				_loader.load(_url);
+				onEditorServerSelected(null);
 			}
 			
 			private function onEditorServerSelected(evt:Event):void

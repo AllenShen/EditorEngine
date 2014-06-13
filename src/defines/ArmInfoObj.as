@@ -41,6 +41,9 @@ package defines
 		public var hp:int;
 		public var hpincre:Number;
 		
+		public var sellType:int;
+		public var sellPrice:int;
+		
 		public var appearType:int;
 		
 		public var specialAppeareType:int;
@@ -57,6 +60,10 @@ package defines
 		
 		public var portrait:String;
 		public var needLeadership:int;
+		
+		public var slogan:String;
+		
+		public var sourceDesc:String;
 		
 		public function ArmInfoObj()
 		{
@@ -97,6 +104,10 @@ package defines
 			
 			retInfo.skillId = this.skillId;
 			retInfo.skillRate = this.skillRate;
+			
+			retInfo.slogan = this.slogan;
+			
+			retInfo.sourceDesc = this.sourceDesc;
 			
 			return retInfo;
 		}

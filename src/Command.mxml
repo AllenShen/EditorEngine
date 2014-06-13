@@ -45,6 +45,8 @@
 							
 				if (data)
 				{
+					var mysqlIndex:int = Global.mysqlIndex;
+					data.unshift(mysqlIndex);
 					head = head.concat(data);
 				}
 				
