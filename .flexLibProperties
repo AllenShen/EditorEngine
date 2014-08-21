@@ -13,6 +13,9 @@
     <classEntry path="SingleServer"/>
     <classEntry path="defines.ProductInfo91"/>
     <classEntry path="Global"/>
+    <classEntry path="defines.WeaponInfo"/>
+    <classEntry path="defines.SingleBufferMap"/>
+    <classEntry path="defines.PlayerLevelNodeInfo"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="318" height="110" title="选择配置" creationComplete="panel1_creationCompleteHandler(event)">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="110" title="选择配置" creationComplete="panel1_creationCompleteHandler(event)">
 	
 	<fx:Script>
 		<![CDATA[
@@ -114,10 +114,10 @@
 	
 	<s:Group horizontalCenter="0" verticalCenter="0">
 		
-		<s:VGroup horizontalAlign="center" gap="10">
+		<s:VGroup width="351" gap="10" horizontalAlign="center">
 			<s:HGroup verticalAlign="middle">
 				<s:Label text="选择数据库类型" />
-				<s:ComboBox id="serverSelect" width="150" dataProvider="{allEditorDBs}" labelField="name" selectedIndex="0" />
+				<s:ComboBox id="serverSelect" width="198" dataProvider="{allEditorDBs}" labelField="name" selectedIndex="0" />
 			</s:HGroup>
 			<s:Button label="OK" id="btnOk" click="btnOk_clickHandler(event)" enabled="true"/>
 		</s:VGroup>

@@ -22,13 +22,9 @@ package defines
 		public var tongguanReward:Array = [];
 		
 		public var baoxiangReward1:Array = [];
-		public var rewardpointsneed1:int = 0;
-		
 		public var baoxiangReward2:Array = [];
-		public var rewardpointsneed2:int = 0;
-		
-		public var baoxiangReward3:Array = [];
-		public var rewardpointsneed3:int = 0;
+
+		public var extraBaoxiangReward:Array = [];
 		
 		public var isBossGuanQia:int = 0;
 		
@@ -52,10 +48,8 @@ package defines
 			this.tongguanReward = object["tongguanReward"];
 			this.baoxiangReward1 = object["baoxiangReward1"];
 			this.baoxiangReward2 = object["baoxiangReward2"];
-			this.baoxiangReward3 = object["baoxiangReward3"];
-			this.rewardpointsneed1 = object["rewardpointsneed1"];
-			this.rewardpointsneed2 = object["rewardpointsneed2"];
-			this.rewardpointsneed3 = object["rewardpointsneed3"];
+			this.extraBaoxiangReward = object["extraBaoxiangReward"];
+			
 			this.isBossGuanQia = object["isBossGuanQia"];
 			
 			if(this.tongguanReward == null)
@@ -64,13 +58,14 @@ package defines
 				this.baoxiangReward1 = [];
 			if(this.baoxiangReward2 == null)
 				this.baoxiangReward2 = [];
-			if(this.baoxiangReward3 == null)
-				this.baoxiangReward3 = [];
+			if(this.extraBaoxiangReward == null)
+				this.extraBaoxiangReward = [];
 			
 			var allTongRewardInfo:Array = [];
 			var allBaoRewardInfo1:Array = [];
 			var allBaoRewardInfo2:Array = [];
-			var allBaoRewardInfo3:Array = [];
+			var allExtraBaoxiang:Array = [];
+			
 			for(var ii:int = 0 ;ii < this.tongguanReward.length;ii++)
 			{
 				allTongRewardInfo.push(SingleRewardInfo.getInstanceFromServerInfo(this.tongguanReward[ii]));
@@ -79,18 +74,21 @@ package defines
 			{
 				allBaoRewardInfo1.push(SingleRewardInfo.getInstanceFromServerInfo(this.baoxiangReward1[ii]));
 			}
+			
 			for(ii = 0 ;ii < this.baoxiangReward2.length;ii++)
 			{
 				allBaoRewardInfo2.push(SingleRewardInfo.getInstanceFromServerInfo(this.baoxiangReward2[ii]));
 			}
-			for(ii = 0 ;ii < this.baoxiangReward3.length;ii++)
+			
+			for(ii = 0 ;ii < this.extraBaoxiangReward.length;ii++)
 			{
-				allBaoRewardInfo3.push(SingleRewardInfo.getInstanceFromServerInfo(this.baoxiangReward3[ii]));
+				allExtraBaoxiang.push(SingleRewardInfo.getInstanceFromServerInfo(this.extraBaoxiangReward[ii]));
 			}
+			
 			this.tongguanReward = allTongRewardInfo;
 			this.baoxiangReward1 = allBaoRewardInfo1;
 			this.baoxiangReward2 = allBaoRewardInfo2;
-			this.baoxiangReward3 = allBaoRewardInfo3;
+			this.extraBaoxiangReward = allExtraBaoxiang;
 		}
 	}
 }

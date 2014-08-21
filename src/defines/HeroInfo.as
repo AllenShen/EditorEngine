@@ -32,6 +32,14 @@ package defines
 		
 		public var sourceDesc:String;
 		
+		public var greenAdvanceQuests:Array = [];
+		public var blueAdvanceQuests:Array = [];
+		public var purpleAdvanceQuests:Array = [];
+		public var orangeAdvanceQuests:Array = [];
+		
+		public var fragmentCount:int = 0;
+		public var weapon:int = 0;
+		
 		public function HeroInfo()
 		{
 		}

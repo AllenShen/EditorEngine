@@ -65,6 +65,10 @@ package defines
 		
 		public var sourceDesc:String;
 		
+		public var eGrid1UnlockQuests:Array;
+		public var eGrid2UnlockQuests:Array;
+		public var eGrid3UnlockQuests:Array;
+		
 		public function ArmInfoObj()
 		{
 			

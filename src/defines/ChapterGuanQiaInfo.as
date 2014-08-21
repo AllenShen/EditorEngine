@@ -27,8 +27,10 @@ package defines
 		
 		public var pathPoints:Array = [];
 		
-		public var guanqiaTask:int;
-		public var guanqiaTaskDetail:Quest;
+		public var guanqiaTask:int = 0;
+		
+		public var tasksOfNormalMode:Array;
+		public var tasksOfHardMode:Array;
 		
 		public function ChapterGuanQiaInfo()
 		{
@@ -36,7 +38,7 @@ package defines
 		
 		public function getNonOriginalData():Array
 		{
-			return ["allsimpleguanqiadetais","guanqiaTaskDetail"];
+			return ["allsimpleguanqiadetais"];
 		}
 		
 	}

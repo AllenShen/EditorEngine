@@ -13,6 +13,9 @@ package defines
 		public var hpvalue:int = 100;
 		public var damageValue:int = 100;
 		
+		public var hpvalue2:int = 100;
+		public var damageValue2:int = 100;
+		
 		public var allUnitSeq:Array = [];
 		public var allUnitSeqDetail:Array = [];
 		

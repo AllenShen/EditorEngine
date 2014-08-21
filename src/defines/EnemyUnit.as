@@ -19,6 +19,8 @@ package defines
 		
 		public var baseArmInfo:ArmInfoObj;
 		
+		public var dropCards:Array = [];
+		
 		public function EnemyUnit()
 		{
 		}
