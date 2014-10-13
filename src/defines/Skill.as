@@ -43,6 +43,10 @@ package defines
 		//触发条件的参数
 		public var triggerParams:Array = [];
 		
+		public var skillLastRound:int = 0;
+		public var delayRoundCount:int = 0;
+		public var needPrepare:int = 0;
+		
 		public function Skill()
 		{
 		}

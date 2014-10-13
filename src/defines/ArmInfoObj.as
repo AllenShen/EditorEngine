@@ -54,8 +54,6 @@ package defines
 		
 		public var skillRate:int;
 		
-		public var skillTriggerType:int;
-		
 		public var effectid:String;
 		
 		public var portrait:String;
@@ -69,12 +67,16 @@ package defines
 		public var eGrid2UnlockQuests:Array;
 		public var eGrid3UnlockQuests:Array;
 		
+		public var starLevel:int;
+		
+		public var allArmSkills:Array = [];
+		
 		public function ArmInfoObj()
 		{
 			
 		}
 		
-		public function getClone():ArmInfoObj
+		public function getCloneForDanBo():ArmInfoObj
 		{
 			var retInfo:ArmInfoObj = new ArmInfoObj;
 			retInfo.armid = this.armid;
@@ -102,7 +104,6 @@ package defines
 			retInfo.appearType = this.appearType;
 			retInfo.specialAppeareType = this.specialAppeareType;
 			retInfo.specialAppeareTypeParam = this.specialAppeareTypeParam;
-			retInfo.skillTriggerType = this.skillTriggerType;
 			retInfo.effectid = this.effectid;
 			retInfo.portrait = this.portrait;
 			
@@ -112,6 +113,28 @@ package defines
 			retInfo.slogan = this.slogan;
 			
 			retInfo.sourceDesc = this.sourceDesc;
+			
+			if(this.allArmSkills == null)		//敌人小兵只具有第一个技能
+			{
+				retInfo.allArmSkills = [];
+			}
+			else
+			{
+				var firstSkill:Array = [];
+				var originalSkill:Array = this.allArmSkills[0];
+				if(originalSkill)
+				{
+					for(var i:int = 0;i < originalSkill.length;i++)
+					{
+						firstSkill[i] = originalSkill[i];
+					}
+					retInfo.allArmSkills = [firstSkill];
+				}
+				else
+				{
+					retInfo.allArmSkills = [];
+				}
+			}
 			
 			return retInfo;
 		}

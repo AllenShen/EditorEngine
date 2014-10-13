@@ -18,9 +18,9 @@
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
-				instance = this;	  
-				setDestination("http://42.62.67.240/servers/DataEditor/Amfphp/");
-//				setDestination("http://127.0.0.1/DataEditor/Amfphp/");
+				instance = this;	
+//				setDestination("http://42.62.67.240/servers/DataEditor/Amfphp/");
+				setDestination("http://127.0.0.1/DataEditor/Amfphp/");
 			}
 			
 			public function sendCommand(rpcparam:Function,command:String,data:Array=null):void

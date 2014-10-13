@@ -15,11 +15,13 @@ package defines
 		public var skillInfoDetail:Skill;
 		public var skillRate:int;
 		public var skillTriggerType:int;
+		public var qualityLevel:int;
 		public var hechengPro:int = 0;		
 		
 		public var baseArmInfo:ArmInfoObj;
 		
 		public var dropCards:Array = [];
+		public var allArmSkills:Array = [];
 		
 		public function EnemyUnit()
 		{

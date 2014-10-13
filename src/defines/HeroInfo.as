@@ -40,6 +40,10 @@ package defines
 		public var fragmentCount:int = 0;
 		public var weapon:int = 0;
 		
+		public var starLevel:int;
+		
+		public var powerGroup:int;		//势力类型
+		
 		public function HeroInfo()
 		{
 		}

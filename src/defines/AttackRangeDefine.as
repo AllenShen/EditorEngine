@@ -134,6 +134,11 @@ package defines
 		public static const wofangDiyiPaiDanweiAll:int = 99;	//我方第一排单位 包括队友
 		
 		public static const difangQianLiangPai:int = 100;	//敌方前两排目标
+		public static const duotiGongJi12:int = 101;	
+		public static const allWeiGuo:int = 102;	
+		public static const duotiShuGuo:int = 103;	
+		public static const duotiWuGuo:int = 104;
+		public static const duotiQunXiong:int = 105;
 		
 		[Bindable]
 		public static var targetlist:ArrayCollection = new ArrayCollection(
@@ -205,7 +210,7 @@ package defines
 				{"type":AttackRangeDefine.duotiGongJi10, "desc":"多体攻击范围10"},
 				{"type":AttackRangeDefine.duotiGongJi11, "desc":"多体攻击范围11"},
 				{"type":AttackRangeDefine.diFangGongJiZiJi, "desc":"敌方攻击自己"},
-				{"type":AttackRangeDefine.diFangTongLie, "desc":"敌方同列"},
+				{"type":AttackRangeDefine.diFangTongLie, "desc":"敌方同列(水平)"},
 				{"type":AttackRangeDefine.diFangSuoYouZhongDu, "desc":"敌方所有中毒单位"},
 				{"type":AttackRangeDefine.diFangSuoYouXuanYun, "desc":"敌方所有眩晕单位"},
 				{"type":AttackRangeDefine.woFangTongLie, "desc":"我方同列"},
@@ -246,7 +251,12 @@ package defines
 				{"type":AttackRangeDefine.heroMappedArmLineFour, "desc":"本英雄对应的第四排兵"},
 				{"type":AttackRangeDefine.wofangDiyiPaiDanwei, "desc":"我方第一排单位"},
 				{"type":AttackRangeDefine.wofangDiyiPaiDanweiAll, "desc":"我方第一排单位,包括队友"},
-				{"type":AttackRangeDefine.difangQianLiangPai, "desc":"敌人前两排目标"}
+				{"type":AttackRangeDefine.difangQianLiangPai, "desc":"敌人前两排目标"},
+				{"type":AttackRangeDefine.duotiGongJi12, "desc":"多体攻击范围12"},
+				{"type":AttackRangeDefine.allWeiGuo, "desc":"所有魏国势力"},
+				{"type":AttackRangeDefine.duotiShuGuo, "desc":"所有蜀国势力"},
+				{"type":AttackRangeDefine.duotiWuGuo, "desc":"所有吴国势力"},
+				{"type":AttackRangeDefine.duotiQunXiong, "desc":"群雄势力"},
 				
 			]
 		);

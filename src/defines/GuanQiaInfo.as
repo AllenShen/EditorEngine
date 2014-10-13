@@ -26,6 +26,9 @@ package defines
 
 		public var extraBaoxiangReward:Array = [];
 		
+		public var simpleWipeReward:Array = [];
+		public var hardWipeReward:Array = [];
+		
 		public var isBossGuanQia:int = 0;
 		
 		public function GuanQiaInfo()
@@ -49,6 +52,8 @@ package defines
 			this.baoxiangReward1 = object["baoxiangReward1"];
 			this.baoxiangReward2 = object["baoxiangReward2"];
 			this.extraBaoxiangReward = object["extraBaoxiangReward"];
+			this.simpleWipeReward = object["simpleWipeReward"];
+			this.hardWipeReward = object["hardWipeReward"];
 			
 			this.isBossGuanQia = object["isBossGuanQia"];
 			
@@ -60,11 +65,17 @@ package defines
 				this.baoxiangReward2 = [];
 			if(this.extraBaoxiangReward == null)
 				this.extraBaoxiangReward = [];
+			if(this.simpleWipeReward == null)
+				this.simpleWipeReward = [];
+			if(this.hardWipeReward == null)
+				this.hardWipeReward = [];
 			
 			var allTongRewardInfo:Array = [];
 			var allBaoRewardInfo1:Array = [];
 			var allBaoRewardInfo2:Array = [];
 			var allExtraBaoxiang:Array = [];
+			var allSimpleWipeReward:Array = [];
+			var allHardWipeReward:Array = [];
 			
 			for(var ii:int = 0 ;ii < this.tongguanReward.length;ii++)
 			{
@@ -85,10 +96,22 @@ package defines
 				allExtraBaoxiang.push(SingleRewardInfo.getInstanceFromServerInfo(this.extraBaoxiangReward[ii]));
 			}
 			
+			for(ii = 0 ;ii < this.simpleWipeReward.length;ii++)
+			{
+				allSimpleWipeReward.push(SingleRewardInfo.getInstanceFromServerInfo(this.simpleWipeReward[ii]));
+			}
+			
+			for(ii = 0 ;ii < this.hardWipeReward.length;ii++)
+			{
+				allHardWipeReward.push(SingleRewardInfo.getInstanceFromServerInfo(this.hardWipeReward[ii]));
+			}
+			
 			this.tongguanReward = allTongRewardInfo;
 			this.baoxiangReward1 = allBaoRewardInfo1;
 			this.baoxiangReward2 = allBaoRewardInfo2;
 			this.extraBaoxiangReward = allExtraBaoxiang;
+			this.simpleWipeReward = allSimpleWipeReward;
+			this.hardWipeReward = allHardWipeReward;
 		}
 	}
 }

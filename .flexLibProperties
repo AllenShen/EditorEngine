@@ -16,6 +16,8 @@
     <classEntry path="defines.WeaponInfo"/>
     <classEntry path="defines.SingleBufferMap"/>
     <classEntry path="defines.PlayerLevelNodeInfo"/>
+    <classEntry path="defines.VipInfo"/>
+    <classEntry path="defines.SuitInfo"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

@@ -19,6 +19,9 @@ package defines
 		public var contentGuanQiaId:int;
 		public var contentGuanQiaInfo:GuanQiaInfo;
 		
+		public var openDays:Array = [];
+		public var descstr:String = "";
+		
 		public function HuoDongInfo()
 		{
 		}
