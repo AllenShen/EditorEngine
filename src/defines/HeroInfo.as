@@ -44,6 +44,8 @@ package defines
 		
 		public var powerGroup:int;		//势力类型
 		
+		public var canPick:int;
+		
 		public function HeroInfo()
 		{
 		}

@@ -69,6 +69,9 @@ package defines
 		
 		public var starLevel:int;
 		
+		public var shopDesc:String;
+		public var soulSourceDesc:String;
+		
 		public var allArmSkills:Array = [];
 		
 		public function ArmInfoObj()

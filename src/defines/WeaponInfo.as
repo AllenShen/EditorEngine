@@ -17,8 +17,7 @@ package defines
 		public var equipType:int = 0;
 		public var growValue:int = 0;
 		
-		public var suitId:int = 0;
-		
+		public var suitId:int = 0;  		
 		public var equipBuffs:Array = [];
 		
 		public function WeaponInfo()

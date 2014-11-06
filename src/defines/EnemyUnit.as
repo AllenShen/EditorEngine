@@ -7,6 +7,7 @@ package defines
 		public var euid:int;
 		public var baseid:int;
 		public var nameid:int;
+		public var nameStr:String;
 		public var effectid:String;
 		public var portrait:String;
 		public var damage:int;

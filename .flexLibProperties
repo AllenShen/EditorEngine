@@ -18,6 +18,7 @@
     <classEntry path="defines.PlayerLevelNodeInfo"/>
     <classEntry path="defines.VipInfo"/>
     <classEntry path="defines.SuitInfo"/>
+    <classEntry path="SingleMonthRewards"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

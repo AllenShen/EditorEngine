@@ -32,7 +32,7 @@ package defines
 		{
 			if(sourceInfo == null)
 				return;
-			this.baseid = sourceInfo.heroid;
+//			this.baseid = sourceInfo.heroid;
 			this.nameid = sourceInfo.heroname;
 			this.nameStr = sourceInfo.nameStr;
 			this.portrait = sourceInfo.portrait;
